@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elliott.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Search Results</title>
+</head>
+<body>
+<article>
+
+    <div class="nav_buttons">
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Return home</a>
+    <a href="{{ url_for('about') }}" class="btn btn-secondary">ABOUT THE SITE</a>
+    </div>
+    <img class="cassette" src="{{ url_for('static', filename='images/cassette.png') }}" alt="drawing of casette">
+
+    {% if theme %}
+        <h2 class="songs_containing">
+             Songs containing "<strong>{{ theme }}</strong>" or a related keyword (see <a href="{{ 
+                url_for('about')}}">About</a> for keyword categories):
+        </h2>
+    {% endif %}
+
+    {% if album %}
+        <h2 class="songs_containing">
+            Songs from the album <strong>{{ album }}</strong>
+        </h2>
+    {% endif %}
+
+    {% if year %}
+        <h2 class="songs_containing">
+             Songs from the year <strong>{{ year }}</strong> 
+        </h2>
+    {% endif %}
+
+    {% if titles %}
+        <h2 class="songs_containing">
+             Songs titles containing <strong>{{ titles }}</strong> 
+        </h2>
+    {% endif %}
+
+    {% if lyrics %}
+        <h2 class="songs_containing">
+             Songs containing the lyric <strong>{{ lyrics }}</strong> 
+        </h2>
+    {% endif %}
+
+    {% if year %}
+    <p class="disclaimer">
+        Years indicate the original <strong>release</strong> of the song, not necessarily the year the song was written or recorded.
+    </p>
+    {% endif %}
+
+    {% if album %}
+    <p class="disclaimer">
+       If a song appears on multiple albums, it will be listed only on the album on which it appeared <strong>first</strong>.
+    </p>
+    {% endif %}
+
+
+    <p id="click_to_visit">click each song for more information</p>
+
+
+
+
+    <ul>
+        {% for song in songs %}
+            <li class="song_title">
+                <a href="{{ url_for('song_page', song_id=song.Index, origin=origin, value=value) }}">{{ song.Title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p class="image_attribution">Cassette image from <a href="https://www.freepik.com/free-vector/hand-drawn-cassette-tape-outline-illustration_82457322.htm" target="_blank">Freepik</a></p>
+    <footer>BUILT BY ZOEY THOMAS | GITHUB REPO | <a href="{{ url_for('about') }}">ABOUT THE SITE</a> </footer>
+
+</article>
+</body>
+</html>

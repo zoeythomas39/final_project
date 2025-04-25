@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ song.Title }}</title>
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elliott.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+<article>
+
+  <div class="nav_buttons">
+
+  <a href="{{ url_for('index') }}" class="btn btn-secondary">RETURN HOME</a>
+
+  {% if origin == 'theme' %}
+  <a href="{{ url_for('theme_results', theme=value) }}" class="btn btn-secondary">RETURN TO RESULTS</a>
+  {% elif origin == 'album' %}
+  <a href="{{ url_for('album_results', album=value) }}" class="btn btn-secondary">RETURN TO RESULTS</a>
+  {% elif origin == 'year' %}
+  <a href="{{ url_for('year_results', year=value) }}" class="btn btn-secondary">RETURN TO RESULTS</a>
+  {% elif origin == 'title' %}
+  <a href="{{ url_for('song_results', titles=value) }}" class="btn btn-secondary">RETURN TO RESULTS</a>
+  {% elif origin == 'lyrics' %}
+  <a href="{{ url_for('lyric_results', lyrics=value) }}" class="btn btn-secondary">RETURN TO RESULTS</a>
+  {% endif %}
+
+  <a href="{{ url_for('about') }}" class="btn btn-secondary">ABOUT THE SITE</a>
+
+  </div>
+
+  <h1 id="songdetail_head">{{ song.Title }}</h1>
+  <p><a href="{{ song.Link }} ">Visit the "{{ song.Title }}" Genius page</a></p>
+  <p><strong>Album:</strong> {{ song.Album }}</p>
+  <p><strong>Year of first studio release:</strong> {{ song.Year }}</p>
+  <p id="lyrics"><strong>Lyrics:</strong></p>
+  <pre>{{ song.Lyrics }}</pre>
+  <img src="{{ url_for('static', filename='images/hand.png') }}" alt="drawing of hand" id="hand_drawing">
+  <p class="image_attribution">
+    Hand image from 
+    <a href="https://www.freepik.com/free-vector/hand-drawn-rock-roll-hand-illustration_82457343.htm">Freepik</a>
+  </p>
+  <footer>BUILT BY ZOEY THOMAS | <a href="https://github.com/zoeythomas39/final_project">GITHUB REPO</a> | <a href="{{ url_for('about') }}">ABOUT THE SITE</a> </footer>
+
+</article>
+</body>
+</html>

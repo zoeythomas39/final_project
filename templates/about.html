@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elliott.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>About the Site</title>
+</head>
+<body>
+<article>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">RETURN HOME</a>
+
+    <h1 class="about_head">
+        ABOUT THE SITE
+    </h1>
+
+    <img src="{{ url_for('static',filename='images/computer.png') }}" alt="computer drawing" id="computer_drawing">
+
+    <h2 class="about_subhead">PURPOSE</h2>
+
+    <p>
+        As a University of Florida media production student, I built this site for my course Advanced Web Applications for Communicators.
+        When tasked with creating a web app incorporating scraping, databases and Python's Flask application framework, I decided to create a 
+        site based on one of my favorite artists, Elliott Smith.
+    </p>
+    <p>
+        Similar web apps exist for other singers — like 
+        <a href="https://ts-lyrics.netlify.app/">this one</a> for Taylor Swift from designer Margaux. But I couldn't find an 
+        existing lyric searcher for Smith online, perhaps due to the relative smallness of his fanbase compared to Swift's. 
+    </p>
+    <p>
+        I also wanted my app to allow a user to search by album, year, keyword or title, rather 
+        than just lyrics.
+    </p>
+
+    <h2 class="about_subhead">METHODOLOGY</h2>
+
+    <p>
+        I began by scraping song information from Genius' Elliott Smith page using Python's <a href="https://pypi.org/project/beautifulsoup4/">Beautiful Soup library</a>. 
+        Going album by album, I took the title, album, release date, Genius link and lyrics for each song. Then, I
+        marked songs containing certain keywords with dummy indicators and wrote the results into a CSV.
+    </p>
+
+    <p>
+        I lightly cleaned the CSV in Microsoft Excel — parsing the year from the "date" column, adding an index column and adjusting a few of the 
+        album titles. Because several compilation albums have been released following Smith's death, I wanted to ensure each
+        track was listed under the album on which it <strong>originally</strong> appeared.
+    </p>
+
+    <p>
+        Next, I connected the CSV to a MySQL database in Python and created Flask templates to hold my pages. 
+        Using <a href="https://getbootstrap.com/">Bootstrap</a> and the open-source 
+        <a href="https://bootswatch.com/3/">Bootswatch</a>, I designed templates for the home, song list and song information pages,
+        as well as error routes. 
+    </p>
+
+    <p>
+        The words used to classify songs into key theme categories are listed below. The GitHub repository for this project can be accessed <a href="https://github.com/zoeythomas39/final_project">here</a>. 
+    </p>
+
+    <h2 class="about_subhead">KEY WORDS USED</h2>
+<div id="keywords_div">
+        <div class="keyword_list_box"><strong class="keyword_list_head">Death</strong>
+            <ul>
+                <li>Death</li>
+                <li>Die</li>
+                <li>Dying</li>
+                <li>Kill</li>
+                <li>Dead</li>
+                <li>Grave</li>
+                <li>Ghost</li>
+                <li>Murder</li>
+                <li>Suicide</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Lonely</strong>
+            <ul>
+                <li>Loneliness</li>
+                <li>Lonely</li>
+                <li>Alone</li>
+                <li>Invisible</li>
+                <li>Isolat</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Water</strong>
+            <ul>
+                <li>Water</li>
+                <li>Ocean</li>
+                <li>River</li>
+                <li>Lake</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Money</strong>
+            <ul>
+                <li>Money</li>
+                <li>Cash</li>
+                <li>Coin</li>
+                <li>Dollar</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Lie</strong>
+            <ul>
+                <li>Lie</li>
+                <li>Lying</li>
+                <li>Fake</li>
+                <li>False</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Love</strong>
+            <ul>
+                <li>Love</li>
+                <li>Heart</li>
+                <li>Loving</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Alcohol</strong>
+            <ul>
+                <li>Alcohol</li>
+                <li>Beer</li>
+                <li>Drunk</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Smoke</strong>
+            <ul>
+                <li>Smoke</li>
+                <li>Smoking</li>
+                <li>Cigarette</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Dream</strong>
+            <ul>
+                <li>Dream</li>
+                <li>Smoking</li>
+                <li>Cigarette</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Life</strong>
+            <ul>
+                <li>Life</li>
+                <li>Living</li>
+                <li>Alive</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Nothing</strong>
+            <ul>
+                <li>Nothing</li>
+                <li>Nobody</li>
+                <li>No one</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Dance</strong>
+            <ul>
+                <li>Dance</li>
+                <li>Dancing</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Memory</strong>
+            <ul>
+                <li>Memory</li>
+                <li>Remember</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Time</strong>
+            <ul>
+                <li>Time</li>
+                <li>Clock</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Lost</strong>
+            <ul>
+                <li>Lost</li>
+                <li>Missing</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Pain</strong>
+            <ul>
+                <li>Pain</li>
+                <li>Hurt</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Friend</strong>
+            <ul>
+                <li>Friend</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Wait</strong>
+            <ul>
+                <li>Wait</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">Sick</strong>
+            <ul>
+                <li>Sick</li>
+            </ul>
+        </div>
+        <div class="keyword_list_box"><strong class="keyword_list_head">City</strong>
+            <ul>
+                <li>City</li>
+            </ul>
+        </div>
+
+        <div class="keyword_list_box"><strong class="keyword_list_head">Home</strong>
+            <ul>
+                <li>Home</li>
+            </ul>
+        </div>
+
+</div>
+<a href="https://www.vecteezy.com/free-vector/computer" class="image_attribution">Computer vectors by Vecteezy</a>
+    <footer>SITE DESIGNED BY ZOEY THOMAS | <a href="https://github.com/zoeythomas39/final_project">GITHUB REPO</a>  | <a href="{{ url_for('index') }}">HOME</a> </footer>
+
+</article>
+</body>
+</html>
