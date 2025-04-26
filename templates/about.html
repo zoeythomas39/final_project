@@ -40,7 +40,8 @@
     <p>
         I began by scraping song information from Genius' Elliott Smith page using Python's <a href="https://pypi.org/project/beautifulsoup4/">Beautiful Soup library</a>. 
         Going album by album, I took the title, album, release date, Genius link and lyrics for each song. Then, I
-        marked songs containing certain keywords with dummy indicators and wrote the results into a CSV.
+        marked songs containing certain keywords with dummy indicators and wrote the results into a CSV. To make the data cleaner and avoid duplicates,
+        I removed live versions of songs, as well as covers, demos, alternate and remastered recordings.
     </p>
 
     <p>
@@ -209,7 +210,7 @@
 
 </div>
 <a href="https://www.vecteezy.com/free-vector/computer" class="image_attribution">Computer vectors by Vecteezy</a>
-    <footer>SITE DESIGNED BY ZOEY THOMAS | <a href="https://github.com/zoeythomas39/final_project">GITHUB REPO</a>  | <a href="{{ url_for('index') }}">HOME</a> </footer>
+    <footer>BUILT BY ZOEY THOMAS | <a href="https://github.com/zoeythomas39/final_project">GITHUB</a>  | <a href="{{ url_for('index') }}">HOME</a> </footer>
 
 </article>
 </body>

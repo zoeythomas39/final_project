@@ -2,7 +2,7 @@
 
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-import os.path
+import os.path, os
 from flask_wtf import FlaskForm, CSRFProtect
 from wtforms import SelectField, SubmitField, StringField
 import secrets
@@ -10,14 +10,20 @@ from flask_bootstrap import Bootstrap5
 import re
 from sqlalchemy import func
 from wtforms.fields import HiddenField
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 # connecting database, creating flask app
 
 db = SQLAlchemy()
 
 app = Flask(__name__)
-foo = secrets.token_urlsafe(16)
-app.secret_key = foo
+application = app
+
+app.secret_key = os.environ.get('SECRET_KEY')
+
+app.config['SESSION_COOKIE_SECURE'] = True
+
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
 csrf = CSRFProtect(app)
 
